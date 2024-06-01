@@ -24,8 +24,7 @@ const PostSynthesize = async (req: Request, res: Response) => {
     const response = await axios.post(api, payload);
     return res.json(response.data);
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Error fetching synthesize" });
+    res.status(500).json({ error: `PostSynthesize Error: ${error}` });
   }
 };
 

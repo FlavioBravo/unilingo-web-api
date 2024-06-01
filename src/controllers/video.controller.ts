@@ -1,34 +1,49 @@
+import axios from "axios";
 import { Request, Response } from "express";
 
-let MostRecentVideoTitle = "";
+let MostRecentVideoAddress = "";
 
-const GetMostRecentVideoTitle = (req: Request, res: Response) => {
+const GetMostRecentVideoURL = (req: Request, res: Response) => {
   try {
     return res.status(200).send({
       success: true,
-      payload: MostRecentVideoTitle,
+      payload: MostRecentVideoAddress,
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Error fetching transcript" });
+    res.status(500).json({ error: `GetMostRecentVideoURL Error: ${error}` });
   }
 };
 
-const PostMostRecentVideoTitle = (req: Request, res: Response) => {
-  const recentTitle = req.body.recentTitle;
+const PostMostRecentVideoURL = (req: Request, res: Response) => {
+  const mostRecentVideoURL = req.body.mostRecentVideoURL as string;
   try {
-    MostRecentVideoTitle = recentTitle;
-    return res.status(200).send({
+    MostRecentVideoAddress = mostRecentVideoURL;
+    return res.status(201).send({
       success: true,
-      payload: MostRecentVideoTitle,
+      payload: MostRecentVideoAddress,
     });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Error fetching transcript" });
+    res.status(500).json({ error: `PostMostRecentVideoURL Error: ${error}` });
+  }
+};
+
+const GetVideoInfo = async (req: Request, res: Response) => {
+  const urlText = req.query.urlText as string;
+  try {
+    const response = await axios.get(urlText, {
+      responseType: "arraybuffer",
+    });
+
+    res.setHeader("Content-Type", "video/mp4");
+    res.send(response.data);
+  } catch (error) {
+    res.status(500).json({ error: `GetVideoInfo Error: ${error}` });
   }
 };
 
 export default {
-  GetMostRecentVideoTitle,
-  PostMostRecentVideoTitle,
+  GetMostRecentVideoURL,
+  PostMostRecentVideoURL,
+  GetVideoInfo,
 };
