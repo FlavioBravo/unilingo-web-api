@@ -2,24 +2,13 @@
 
 [Check Live Site](https://unilingo-web-api.onrender.com)
 
-This web api has the below features:
-
-Checkpoint 1
-- Anyone that visits the page will be able to see the most recent video title entered by the most recent user. So store things somehow.
-
-Checkpoint 4
-- Find a way to translate the audio from 0:30 to 0:45 into spanish. Show the translation on the screen.
-- Use whatever API(s) you want.
-
-Checkpoint 5
-- Show another play button. When pressed, it will speak the spanish text using speech to text.
-- Use whatever API(s) you want.
+This web api help to complete the features mentioned in [README.md from unilingo-web-app](https://github.com/FlavioBravo/unilingo-web-app/blob/master/README.md)
 
 ## Comments
 
 - The UI was develop with Express, typescript, Axios and Cors.
-- External packages are used here like [youtube-transcript](https://www.npmjs.com/package/youtube-transcript), [youtubei.js](https://www.npmjs.com/package/youtubei), a[LangChain](https://js.langchain.com/v0.1/docs/integrations/document_loaders/web_loaders/youtube/), and [dotenv](https://www.npmjs.com/package/dotenv).
-- External API's are used like [Cloud Translation API](https://cloud.google.com/translate/docs/setup) and [Cloud Text-to-Speech API](https://cloud.google.com/text-to-speech?hl=en). Both API are using an API Key as a credential.
+- External packages are used here like [Express](https://www.npmjs.com/package/express), [multer](https://www.npmjs.com/package/multer), [LangChain](https://js.langchain.com/v0.1/docs/integrations/document_loaders/web_loaders/youtube/), and [dotenv](https://www.npmjs.com/package/dotenv).
+- External API's are used like [Cloud Translation API](https://cloud.google.com/translate/docs/setup), [Cloud Text-to-Speech API](https://cloud.google.com/text-to-speech?hl=en), [Cloud Vision API](https://cloud.google.com/vision/docs), and [Cloud Speech-to-Text](https://cloud.google.com/speech-to-text/docs). We are using API Key as a credential for some services and Account Service JSON as a credential for another services.
 - This web api is hosted in [Render](https://render.com/) using Web Service.
 - For this project an environment file is needed to run this application succesfully. Create a .env file at the root of your project directory as follows:
 
@@ -27,6 +16,7 @@ Checkpoint 5
     TEXT_TO_SPEECH_API_KEY = xxxxxxxxxxxxxxx
     TRANSLATE_API_KEY = xxxxxxxxxxxxxxxx
 ```
+- Also, For this project two json file is needed to run this application succesfully. Page two json file at the root of your project directory. You could get this json file from Account Service in Google Cloud.
 
 In the project directory, you can run:
 ## Available Scripts
